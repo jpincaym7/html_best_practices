@@ -4,58 +4,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Semántico con Tailwind</title>
+    <meta name="theme-color" content="#4f46e5">
+
+    <title>Registro Profesional | Únete a nuestra red de talentos</title>
+    <meta name="description"
+        content="Completa tu registro profesional para crear tu perfil, destacar tus habilidades y conectar con las mejores oportunidades laborales del mercado.">
+
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.cuentagratis.com/registro-profesional">
+
+    <meta property="og:title" content="Registro Profesional | Únete a nuestra red">
+    <meta property="og:description" content="Impulsa tu carrera creando tu perfil profesional en menos de 2 minutos.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.cuentagratis.com/registro-profesional">
+    <meta property="og:image" content="https://www.cuentagratis.com/img/banner-registro.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Registro Profesional">
+    <meta name="twitter:description" content="Impulsa tu carrera creando tu perfil profesional en menos de 2 minutos.">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex items-center justify-center p-4 sm:p-6">
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex items-center justify-center p-4 sm:p-6 relative">
 
-    <main class="w-full max-w-2xl bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+    <a href="#formulario-registro"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-indigo-600 focus:text-white focus:px-4 focus:py-2 focus:font-bold focus:rounded-lg focus:outline-none focus:ring-4 focus:ring-indigo-300">
+        Saltar al formulario
+    </a>
 
-        <header class="bg-indigo-600 p-6 sm:p-8 text-white">
+    <main role="main" class="w-full max-w-2xl bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+
+        <header role="banner" class="bg-indigo-600 p-6 sm:p-8 text-white">
             <h1 class="text-2xl sm:text-3xl font-bold flex items-center gap-3">
-                <i class="fa-solid fa-user-astronaut"></i>
+                <i class="fa-solid fa-user-astronaut" aria-hidden="true"></i>
                 Registro Profesional
             </h1>
             <p class="text-indigo-100 mt-2 text-sm sm:text-base">
-                Completa el siguiente formulario para crear tu perfil. Los campos marcados con (*) son obligatorios.
+                Completa el siguiente formulario para crear tu perfil. Los campos marcados con
+                (<abbr title="Obligatorio" aria-label="Obligatorio" class="text-red-300 font-bold">*</abbr>) son
+                obligatorios.
             </p>
         </header>
 
-        <form action="#" method="POST" class="p-6 sm:p-8 space-y-8">
+        <form id="formulario-registro" aria-label="Formulario de registro de nuevo profesional" action="#" method="POST"
+            class="p-6 sm:p-8 space-y-8 group" novalidate>
 
             <fieldset class="space-y-5">
                 <legend
                     class="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2 w-full flex items-center gap-2">
-                    <i class="fa-regular fa-id-badge text-indigo-500"></i> Información Personal
+                    <i class="fa-regular fa-id-badge text-indigo-500" aria-hidden="true"></i> Información Personal
                 </legend>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
                     <div class="flex flex-col gap-1.5">
                         <label for="nombre" class="text-sm font-medium text-gray-700">
-                            Nombre Completo <span class="text-red-500" aria-hidden="true">*</span>
+                            Nombre Completo <abbr title="Obligatorio" aria-label="Obligatorio"
+                                class="text-red-500 no-underline">*</abbr>
                         </label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i class="fa-regular fa-user text-gray-400"></i>
+                        <div class="relative flex flex-col">
+                            <div class="absolute top-0 left-0 h-[42px] pl-3 flex items-center pointer-events-none">
+                                <i class="fa-regular fa-user text-gray-400" aria-hidden="true"></i>
                             </div>
-                            <input type="text" id="nombre" name="nombre" required placeholder="Ej: Ana López"
-                                class="w-full pl-10 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm">
+                            <input type="text" id="nombre" name="nombre" required aria-required="true"
+                                aria-invalid="false" placeholder="Ej: Ana López" autocomplete="name" minlength="3"
+                                maxlength="60" pattern="^[a-zA-ZÀ-ÿ\s]+$" aria-describedby="error-nombre"
+                                class="peer w-full pl-10 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:ring-1 invalid:[&:not(:placeholder-shown):not(:focus)]:ring-red-500">
+                            <p id="error-nombre" aria-live="polite"
+                                class="mt-1 hidden text-xs text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                                Ingresa un nombre válido (letras, entre 3 y 60 caracteres).
+                            </p>
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-1.5">
                         <label for="correo" class="text-sm font-medium text-gray-700">
-                            Correo Electrónico <span class="text-red-500" aria-hidden="true">*</span>
+                            Correo Electrónico <abbr title="Obligatorio" aria-label="Obligatorio"
+                                class="text-red-500 no-underline">*</abbr>
                         </label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i class="fa-regular fa-envelope text-gray-400"></i>
+                        <div class="relative flex flex-col">
+                            <div class="absolute top-0 left-0 h-[42px] pl-3 flex items-center pointer-events-none">
+                                <i class="fa-regular fa-envelope text-gray-400" aria-hidden="true"></i>
                             </div>
-                            <input type="email" id="correo" name="correo" required placeholder="ana@ejemplo.com"
-                                class="w-full pl-10 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm">
+                            <input type="email" id="correo" name="correo" required aria-required="true"
+                                aria-invalid="false" placeholder="ana@ejemplo.com" autocomplete="email" minlength="5"
+                                maxlength="100" aria-describedby="error-correo"
+                                class="peer w-full pl-10 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:ring-1 invalid:[&:not(:placeholder-shown):not(:focus)]:ring-red-500">
+                            <p id="error-correo" aria-live="polite"
+                                class="mt-1 hidden text-xs text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                                Ingresa un formato de correo electrónico válido (mín. 5 caracteres).
+                            </p>
                         </div>
                     </div>
 
@@ -63,25 +102,36 @@
                         <label for="telefono" class="text-sm font-medium text-gray-700">
                             Número de Teléfono
                         </label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i class="fa-solid fa-phone text-gray-400"></i>
+                        <div class="relative flex flex-col">
+                            <div class="absolute top-0 left-0 h-[42px] pl-3 flex items-center pointer-events-none">
+                                <i class="fa-solid fa-phone text-gray-400" aria-hidden="true"></i>
                             </div>
                             <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000"
-                                class="w-full pl-10 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm">
+                                autocomplete="tel" inputmode="tel" minlength="9" maxlength="15"
+                                pattern="^\+?[0-9\s]{9,15}$" aria-describedby="error-telefono"
+                                class="peer w-full pl-10 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:ring-1 invalid:[&:not(:placeholder-shown):not(:focus)]:ring-red-500">
+                            <p id="error-telefono" aria-live="polite"
+                                class="mt-1 hidden text-xs text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                                Formato inválido. Entre 9 y 15 dígitos. Ej: +34 600 000 000.
+                            </p>
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-1.5">
                         <label for="edad" class="text-sm font-medium text-gray-700">
-                            Edad <span class="text-gray-400 font-normal ml-1">(opcional)</span>
+                            Edad <span class="text-gray-400 font-normal ml-1" aria-hidden="true">(opcional)</span>
                         </label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i class="fa-regular fa-calendar text-gray-400"></i>
+                        <div class="relative flex flex-col">
+                            <div class="absolute top-0 left-0 h-[42px] pl-3 flex items-center pointer-events-none">
+                                <i class="fa-regular fa-calendar text-gray-400" aria-hidden="true"></i>
                             </div>
-                            <input type="number" id="edad" name="edad" min="18" max="120" placeholder="18"
-                                class="w-full pl-10 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm">
+                            <input type="number" id="edad" name="edad" min="18" max="110" placeholder="18"
+                                aria-describedby="error-edad"
+                                class="peer w-full pl-10 pr-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:ring-1 invalid:[&:not(:placeholder-shown):not(:focus)]:ring-red-500">
+                            <p id="error-edad" aria-live="polite"
+                                class="mt-1 hidden text-xs text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                                Debes tener entre 18 y 110 años.
+                            </p>
                         </div>
                     </div>
 
@@ -90,8 +140,13 @@
                             Fecha de Nacimiento
                         </label>
                         <div class="relative">
-                            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"
-                                class="w-full px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm">
+                            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" autocomplete="bday"
+                                min="1940-01-01" max="2008-12-31"
+                                class="peer w-full px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm cursor-pointer invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500">
+                            <p id="error-fecha" aria-live="polite"
+                                class="mt-1 hidden text-xs text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                                Fecha inválida (debe ser mayor de 18 años).
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -100,19 +155,20 @@
             <fieldset class="space-y-5">
                 <legend
                     class="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2 w-full flex items-center gap-2">
-                    <i class="fa-solid fa-laptop-code text-indigo-500"></i> Detalles Profesionales
+                    <i class="fa-solid fa-laptop-code text-indigo-500" aria-hidden="true"></i> Detalles Profesionales
                 </legend>
 
                 <div class="flex flex-col gap-1.5">
                     <label for="especialidad" class="text-sm font-medium text-gray-700">
-                        Especialidad Principal <span class="text-red-500" aria-hidden="true">*</span>
+                        Especialidad Principal <abbr title="Obligatorio" aria-label="Obligatorio"
+                            class="text-red-500 no-underline">*</abbr>
                     </label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <i class="fa-solid fa-code text-gray-400"></i>
+                            <i class="fa-solid fa-code text-gray-400" aria-hidden="true"></i>
                         </div>
-                        <select id="especialidad" name="especialidad" required
-                            class="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm appearance-none cursor-pointer">
+                        <select id="especialidad" name="especialidad" required aria-required="true"
+                            class="peer w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm appearance-none cursor-pointer invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500">
                             <option value="" disabled selected>Selecciona una opción...</option>
                             <option value="frontend">Desarrollador Frontend</option>
                             <option value="backend">Desarrollador Backend</option>
@@ -120,7 +176,7 @@
                             <option value="uiux">Diseñador UI/UX</option>
                         </select>
                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                            <i class="fa-solid fa-chevron-down text-gray-500 text-xs"></i>
+                            <i class="fa-solid fa-chevron-down text-gray-500 text-xs" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
@@ -129,36 +185,45 @@
                     <label for="biografia" class="text-sm font-medium text-gray-700">
                         Breve Biografía
                     </label>
-                    <textarea id="biografia" name="biografia" rows="4"
-                        placeholder="Describe brevemente tu experiencia y habilidades principales..."
-                        class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm resize-y"></textarea>
+                    <div class="relative flex flex-col">
+                        <textarea id="biografia" name="biografia" rows="4" minlength="10" maxlength="500"
+                            aria-multiline="true"
+                            placeholder="Describe brevemente tu experiencia y habilidades principales..."
+                            class="peer w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all shadow-sm resize-y invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500"></textarea>
+                        <p id="error-biografia" aria-live="polite"
+                            class="mt-1 hidden text-xs text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                            La biografía debe tener al menos 10 caracteres.
+                        </p>
+                    </div>
                 </div>
             </fieldset>
 
             <div class="flex items-start gap-3 bg-indigo-50/50 p-4 rounded-lg border border-indigo-100">
                 <div class="flex items-center h-5 mt-0.5">
-                    <input type="checkbox" id="terminos" name="terminos" required
-                        class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 cursor-pointer">
+                    <input type="checkbox" id="terminos" name="terminos" required aria-required="true"
+                        class="peer w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 focus:ring-2 focus:outline-none cursor-pointer transition-all">
                 </div>
                 <div class="flex flex-col">
                     <label for="terminos" class="text-sm font-semibold text-gray-800 cursor-pointer">
-                        Acepto los términos y condiciones <span class="text-red-500" aria-hidden="true">*</span>
+                        Acepto los términos y condiciones <abbr title="Obligatorio" aria-label="Obligatorio"
+                            class="text-red-500 no-underline">*</abbr>
                     </label>
                     <p class="text-xs text-gray-600 mt-1">
-                        Al marcar esta casilla, confirmas que has leído y aceptas nuestra política de privacidad sobre
-                        el tratamiento de datos.
+                        Al marcar esta casilla, confirmas que has leído y aceptas nuestra <a href="#"
+                            class="text-indigo-600 hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:rounded"
+                            aria-label="Leer política de privacidad">política de privacidad</a>.
                     </p>
                 </div>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-4 pt-4 border-t border-gray-200">
-                <button type="submit"
-                    class="flex-1 bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all flex justify-center items-center gap-2 transform active:scale-[0.98]">
-                    <i class="fa-solid fa-paper-plane"></i> Enviar Registro
+                <button type="submit" aria-disabled="false"
+                    class="flex-1 bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all flex justify-center items-center gap-2 transform active:scale-[0.98] group-invalid:pointer-events-none group-invalid:opacity-60 group-invalid:aria-disabled='true'">
+                    <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Enviar Registro
                 </button>
                 <button type="reset"
-                    class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 transition-all">
-                    <i class="fa-solid fa-eraser mr-2"></i> Limpiar
+                    class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 transition-all flex justify-center items-center">
+                    <i class="fa-solid fa-eraser mr-2" aria-hidden="true"></i> Limpiar
                 </button>
             </div>
 
